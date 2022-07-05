@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
-const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
-const saveRoute = require("./routes/save");
+const taskRoute = require("./routes/tasks");
 const PORT = 8080;
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -19,9 +18,8 @@ mongoose
 
 //Route
 app.use(express.json());
-app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/save", saveRoute);
+app.use("/api/tasks", taskRoute);
 
 app.get("/", (req, res) => {
     res.send("hello express");

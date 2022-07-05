@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const SaveSchema = new mongoose.Schema(
+const TaskSchema = new mongoose.Schema(
     {
         userId: {
             type: String,
@@ -24,4 +24,4 @@ const SaveSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("Save", SaveSchema);
+module.exports = mongoose.model("Task", TaskSchema);

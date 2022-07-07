@@ -3,9 +3,9 @@ const Task = require("../models/Task");
 const User = require("../models/User");
 
 //Fetch tasks
-router.get("/all", async (req, res) => {
+router.get("/all/:id", async (req, res) => {
     try {
-        const currentUser = await User.findById(req.body.userId);
+        const currentUser = await User.findById(req.params.id);
         const userTasks = await Task.find({ userId: currentUser._id });
         return res.status(200).json(userTasks);
     } catch (err) {

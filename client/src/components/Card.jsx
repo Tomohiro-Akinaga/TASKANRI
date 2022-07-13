@@ -1,10 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Card = ({ item, taskCounter, setTaskCounter }) => {
-    const editTask = (id) => {
-        console.log(id);
-    };
     const deleteTask = async (id) => {
         try {
             await axios.delete(`/tasks/${id}`);
@@ -17,7 +15,7 @@ const Card = ({ item, taskCounter, setTaskCounter }) => {
     return (
         <li id={item._id}>
             {item.task}
-            <button onClick={() => editTask(item._id)}>edit</button>
+            <Link to={item._id}>Edit</Link>
             <button onClick={() => deleteTask(item._id)}>delete</button>
         </li>
     );

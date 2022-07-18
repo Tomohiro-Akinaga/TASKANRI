@@ -25,4 +25,14 @@ router.post("/:id", async (req, res) => {
     }
 });
 
+router.delete("/:id", async (req, res) => {
+    try {
+        const task = await Task.findById(req.body.id);
+        await task.deleteOne();
+        return res.status(200).json("Success to delete task");
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
+
 module.exports = router;

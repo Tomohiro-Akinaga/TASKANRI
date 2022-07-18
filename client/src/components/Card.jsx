@@ -1,11 +1,16 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Card = ({ item, taskCounter, setTaskCounter }) => {
-    const deleteTask = async (id) => {
+    const id = useParams();
+    const taskID = item._id;
+
+    const params = { id: taskID };
+
+    const deleteTask = async () => {
         try {
-            await axios.delete(`/tasks/${id}`);
+            await axios.delete("/tasks/" + id, { data: params });
         } catch (err) {
             console.log(err);
         }

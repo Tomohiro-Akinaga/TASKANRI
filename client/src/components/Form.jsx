@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Form = ({ taskCounter, setTaskCounter }) => {
     const [inputValue, setInputValue] = useState("");
-
+    const { id } = useParams();
+    
     const addNewTask = async (e) => {
         e.preventDefault();
-        const newTodo = { task: inputValue, completed: false };
+        const newTodo = { userid: id, task: inputValue };
         try {
-            await axios.post("/tasks", newTodo);
+            await axios.post("/tasks/" + id, newTodo);
         } catch (err) {
             console.log(err);
         }

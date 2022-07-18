@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema(
     {
-        userId: {
+        userid: {
             type: String,
             required: true,
-            unique: true,
         },
         task: {
             type: String,

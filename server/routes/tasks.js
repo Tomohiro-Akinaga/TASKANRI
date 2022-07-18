@@ -12,10 +12,10 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/:id", async (req, res) => {
     try {
         const newTask = await new Task({
-            userId: req.body.userId,
+            userid: req.body.userid,
             task: req.body.task,
         });
         const task = await newTask.save();

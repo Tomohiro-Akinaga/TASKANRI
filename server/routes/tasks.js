@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const Task = require("../models/Task");
+const User = require("../models/User");
 
 router.get("/:id", async (req, res) => {
     try {
-        const data = await Task.findById(req.params.id);
-        res.status(200).json(data);
+        const currentUser = await User.findById(req.params.id);
+        const userTasks = await Task.find({ userId: currentUser._id });
+        return res.status(200).json(userTasks);
     } catch (err) {
         return res.status(500).json(err);
     }
@@ -13,7 +15,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const newTask = await new Task({
-            userid: req.body.userid,
+            userId: req.body.userId,
             task: req.body.task,
         });
         const task = await newTask.save();

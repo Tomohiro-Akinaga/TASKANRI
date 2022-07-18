@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Form from "../components/Form";
 import CardList from "../components/CardList";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
     const [todos, setTodos] = useState();
     const [taskCounter, setTaskCounter] = useState(0);
+    const { id } = useParams();
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get("/tasks");
+            const response = await axios.get("/tasks/" + id);
             setTodos(response.data);
         })();
     }, [taskCounter]);

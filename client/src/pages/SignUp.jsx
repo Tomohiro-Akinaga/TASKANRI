@@ -16,11 +16,12 @@ const SignUp = () => {
             password: passwordValue,
         };
         try {
-            await axios.post("/users/signup", newUser);
+            const user = await axios.post("/users/signup", newUser);
+            const userId = user.data._id;
+            navigate(`/tasks/${userId}`);
         } catch (err) {
             console.log(err);
         }
-        // navigate("/"); // How can I pass user id to Home URL?
     };
 
     return (
@@ -32,14 +33,15 @@ const SignUp = () => {
                 onChange={(e) => setUserNameValue(e.target.value)}
             />
             <input
-                type="text"
+                type="email"
                 placeholder="email"
                 value={emailValue}
                 onChange={(e) => setEmailValue(e.target.value)}
             />
             <input
-                type="text"
+                type="password"
                 placeholder="password"
+                minLength={6}
                 value={passwordValue}
                 onChange={(e) => setPasswordValue(e.target.value)}
             />

@@ -4,14 +4,18 @@ import Form from "../components/Form";
 import CardList from "../components/CardList";
 import { useParams } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ currentUser }) => {
     const [todos, setTodos] = useState();
     const [taskCounter, setTaskCounter] = useState(0);
-    const { id } = useParams();
+
+    const userId = currentUser.userId;
+
+    const id = useParams();
+    
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get("/tasks/" + id);
+            const response = await axios.get(`/tasks/${id}`);
             setTodos(response.data);
         })();
     }, [taskCounter]);

@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 
 const currentUser = {
-    userId: "62c39d9d6198576ac76496d1",
-    userName: "Tanaka",
+    userId: "62d377619c30e705730f73b5",
+    userName: "Tomo",
 };
 
 const CurrentUserContext = createContext(currentUser);

@@ -4,19 +4,20 @@ import { useParams } from "react-router-dom";
 import EditContainer from "../components/EditContainer";
 
 const EditTask = () => {
-    const { id } = useParams();
     const [todo, setTodo] = useState();
+
+    const { id } = useParams();
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get(`tasks/${id}`);
+            const response = await axios.get("/tasks/");
             setTodo(response.data);
         })();
     }, []);
 
     return (
         <div>
-            <h2>hello, {id}</h2>
+            <h2>hello</h2>
             {todo && <EditContainer todo={todo} id={id} />}
         </div>
     );

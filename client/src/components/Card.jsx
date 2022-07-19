@@ -20,7 +20,9 @@ const Card = ({ item, taskCounter, setTaskCounter }) => {
     return (
         <li id={item._id}>
             {item.task}
-            <Link to={item._id}>Edit</Link>
+            <Link to={item._id} id={item._id}>
+                Edit
+            </Link>
             <button onClick={() => deleteTask(item._id)}>delete</button>
         </li>
     );

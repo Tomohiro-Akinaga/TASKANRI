@@ -17,7 +17,9 @@ const SignUp = () => {
         };
         try {
             const user = await axios.post("/users/signup", newUser);
-            console.log(user);
+            if (user) {
+                navigate(`/tasks/${user.data._id}`);
+            }
         } catch (err) {
             console.log(err);
         }

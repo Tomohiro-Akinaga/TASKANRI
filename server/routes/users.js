@@ -8,10 +8,13 @@ router.post("/signup", async (req, res) => {
             email: req.body.email,
             password: req.body.password,
         });
-        // const findUser = await User.findOne({ email: req.body.email });
-        // return res.status(200).json(findUser);
-        const user = await newUser.save();
-        return res.status(200).json(user);
+        const findUser = await User.findOne({ email: req.body.email });
+        if (findUser) {
+            return res.status(200).json(findUser);
+        } else {
+            const user = await newUser.save();
+            return res.status(200).json(user);
+        }
     } catch (err) {
         return res.status(500).json(err);
     }

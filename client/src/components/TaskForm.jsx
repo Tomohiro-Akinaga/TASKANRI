@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const Form = ({ taskCounter, setTaskCounter }) => {
+const TaskForm = ({ taskCounter, setTaskCounter }) => {
     const [inputValue, setInputValue] = useState("");
     const { userid } = useParams();
 
@@ -29,4 +29,4 @@ const Form = ({ taskCounter, setTaskCounter }) => {
     );
 };
 
-export default Form;
+export default TaskForm;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Form from "../components/Form";
+import TaskForm from "../components/TaskForm";
 import CardList from "../components/CardList";
 import { useParams } from "react-router-dom";
 
@@ -19,7 +19,10 @@ const Home = () => {
 
     return (
         <div>
-            <Form taskCounter={taskCounter} setTaskCounter={setTaskCounter} />
+            <TaskForm
+                taskCounter={taskCounter}
+                setTaskCounter={setTaskCounter}
+            />
             {todos && (
                 <CardList
                     todos={todos}

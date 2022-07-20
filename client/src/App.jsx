@@ -12,6 +12,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<SignUp />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/tasks/:userid" element={<Home />} />
                 <Route path="/tasks/:userid/:taskid" element={<EditTask />} />

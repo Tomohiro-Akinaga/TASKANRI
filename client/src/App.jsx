@@ -13,14 +13,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/signup" element={<SignUp />} />
-                <Route
-                    path="/tasks/:userid"
-                    element={<Home currentUser={currentUser} />}
-                />
-                <Route
-                    path="/tasks/:userid/:taskid"
-                    element={<EditTask currentUser={currentUser} />}
-                />
+                <Route path="/tasks/:userid" element={<Home />} />
+                <Route path="/tasks/:userid/:taskid" element={<EditTask />} />
             </Routes>
         </BrowserRouter>
     );

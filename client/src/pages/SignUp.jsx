@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+    const [userExist, setUserExist] = useState(false);
+    const navigate = useNavigate();
     const userid = localStorage.getItem("userid");
-    console.log(userid);
+
+    useEffect(() => {
+        if (userid) navigate(`/tasks/${userid}`);
+    }, []);
+
     return (
         <div>
-            <UserForm />
+            {userExist && <p>You already have account!</p>}
+            <UserForm setUserExist={setUserExist} />
         </div>
     );
 };

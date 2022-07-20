@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const UserForm = () => {
+const UserForm = ({ setUserExist }) => {
     const [userNameValue, setUserNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
@@ -23,6 +23,7 @@ const UserForm = () => {
             }
         } catch (err) {
             console.log(err);
+            if (err.response.status === 409) setUserExist(true);
         }
     };
 

@@ -6,11 +6,11 @@ import EditContainer from "../components/EditContainer";
 const EditTask = () => {
     const [todo, setTodo] = useState();
 
-    const { id } = useParams();
+    const { userid, taskid } = useParams();
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get("/tasks/");
+            const response = await axios.get(`/tasks/${userid}/${taskid}`);
             setTodo(response.data);
         })();
     }, []);
@@ -18,7 +18,7 @@ const EditTask = () => {
     return (
         <div>
             <h2>hello</h2>
-            {todo && <EditContainer todo={todo} id={id} />}
+            {todo && <EditContainer todo={todo} />}
         </div>
     );
 };

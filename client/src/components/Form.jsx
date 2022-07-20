@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 
 const Form = ({ taskCounter, setTaskCounter }) => {
     const [inputValue, setInputValue] = useState("");
-    const { id } = useParams();
-    
+    const { userid } = useParams();
+
     const addNewTask = async (e) => {
         e.preventDefault();
-        const newTodo = { userid: id, task: inputValue };
+        const newTodo = { task: inputValue };
         try {
-            await axios.post("/tasks/" + id, newTodo);
+            await axios.post("/tasks/" + userid, newTodo);
         } catch (err) {
             console.log(err);
         }

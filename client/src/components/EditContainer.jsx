@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const EditContainer = ({ todo, id }) => {
+const EditContainer = ({ todo }) => {
     const [inputValue, setInputValue] = useState(todo.task);
     const [completed, setCompleted] = useState(todo.completed);
+    const { userid, taskid } = useParams();
 
     const updateTask = async () => {
         const newTask = { task: inputValue, completed: completed };
 
         try {
-            await axios.put(`/tasks/${id}`, newTask);
+            await axios.put(`/tasks/${userid}/${taskid}`, newTask);
         } catch (err) {
             console.log(err);
         }
@@ -26,8 +27,8 @@ const EditContainer = ({ todo, id }) => {
             <button onClick={() => setCompleted(!completed)}>
                 {completed ? "not done" : "done"}
             </button>
-            <Link to={"/"}>Cancel</Link>
-            <Link to={"/"} onClick={updateTask}>
+            <Link to={"/tasks/" + userid}>Cancel</Link>
+            <Link to={"/tasks/" + userid} onClick={updateTask}>
                 Save
             </Link>
         </div>

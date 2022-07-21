@@ -20,4 +20,14 @@ router.post("/signup", async (req, res) => {
     }
 });
 
+router.post("/signin", async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) res.status(404).send("User does not exist");
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
+
 module.exports = router;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const UserForm = ({ setUserExist }) => {
+const SignUpForm = ({ setUserExist }) => {
     const [userNameValue, setUserNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
@@ -55,4 +55,4 @@ const UserForm = ({ setUserExist }) => {
     );
 };
 
-export default UserForm;
+export default SignUpForm;

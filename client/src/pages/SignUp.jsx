@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import UserForm from "../components/UserForm";
-import { useNavigate } from "react-router-dom";
+import SignUpForm from "../components/SignUpForm";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const [userExist, setUserExist] = useState(false);
@@ -14,7 +14,8 @@ const SignUp = () => {
     return (
         <div>
             {userExist && <p>You already have account!</p>}
-            <UserForm setUserExist={setUserExist} />
+            <SignUpForm setUserExist={setUserExist} />
+            <Link to="/signin">Sign In </Link>
         </div>
     );
 };

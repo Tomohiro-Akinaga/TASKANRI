@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SignUpForm from "../components/SignUpForm";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const [userExist, setUserExist] = useState(false);
-    const navigate = useNavigate();
-    const userid = localStorage.getItem("userid");
-
-    useEffect(() => {
-        if (userid) navigate(`/tasks/${userid}`);
-    }, []);
 
     return (
         <div>

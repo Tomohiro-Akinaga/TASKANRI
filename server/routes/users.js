@@ -30,4 +30,13 @@ router.post("/signin", async (req, res) => {
     }
 });
 
+router.get("/:userid", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userid);
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
+
 module.exports = router;

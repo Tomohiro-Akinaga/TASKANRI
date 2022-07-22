@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import TaskForm from "../components/TaskForm";
 import CardList from "../components/CardList";
-import { useParams } from "react-router-dom";
+import SignOutButton from "../components/SignOutButton";
 
 const Home = () => {
     const [todos, setTodos] = useState();
@@ -30,6 +31,7 @@ const Home = () => {
                     setTaskCounter={setTaskCounter}
                 />
             )}
+            <SignOutButton />
         </div>
     );
 };

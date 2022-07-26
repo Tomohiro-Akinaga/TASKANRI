@@ -17,7 +17,7 @@ const EditTask = () => {
 
     return (
         <div>
-            <h2>hello</h2>
+            <h2>Edit Task</h2>
             {todo && <EditContainer todo={todo} />}
         </div>
     );

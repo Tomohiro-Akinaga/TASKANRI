@@ -15,7 +15,6 @@ const SignInForm = ({ setUserExist }) => {
         };
         try {
             const user = await axios.post("/users/signin", existUser);
-            console.log(user);
             setUserExist(true);
             navigate(`/tasks/${user.data._id}`);
             localStorage.setItem("userid", user.data._id);

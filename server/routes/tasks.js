@@ -23,6 +23,7 @@ router.get("/:userid/:taskid", async (req, res) => {
     }
 });
 
+// Post single task
 router.post("/:userid", async (req, res) => {
     try {
         const newTask = await new Task({
@@ -36,6 +37,20 @@ router.post("/:userid", async (req, res) => {
     }
 });
 
+//Edit single task
+router.put("/:userid/:taskid", async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.taskid);
+        await task.updateOne({
+            $set: req.body,
+        });
+        return res.status(200).json(task);
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+});
+
+//Delete single task
 router.delete("/:userid", async (req, res) => {
     try {
         const task = await Task.findById(req.body.id);

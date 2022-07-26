@@ -6,10 +6,13 @@ const EditContainer = ({ todo }) => {
     const [inputValue, setInputValue] = useState(todo.task);
     const [completed, setCompleted] = useState(todo.completed);
     const { userid, taskid } = useParams();
-
+    
     const updateTask = async () => {
-        const newTask = { task: inputValue, completed: completed };
-
+        const newTask = {
+            userid: userid,
+            task: inputValue,
+            completed: completed,
+        };
         try {
             await axios.put(`/tasks/${userid}/${taskid}`, newTask);
         } catch (err) {

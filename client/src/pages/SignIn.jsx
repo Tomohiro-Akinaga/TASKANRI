@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignInForm from "../components/SignInForm";
-import { GoogleLogin } from "react-google-login";
 
 const SignIn = () => {
     const [userExist, setUserExist] = useState(true);
